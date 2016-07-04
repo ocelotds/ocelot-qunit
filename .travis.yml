@@ -17,8 +17,6 @@ addons:
   
 language: java
 jdk: oraclejdk7
-install: 
-  - echo $VPS_HOST
-  - mvn install -DskipTests=true
+install: mvn install -DskipTests=true
 after_success:
   - sshpass -p $VPS_PASSWORD scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ocelot-qunit-ear/target/ocelot-qunit-ear*.ear $VPS_LOGIN@$VPS_HOST:/root/autodeploy/ocelot-qunit-ear.ear
