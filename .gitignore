@@ -6,3 +6,4 @@
 /target/
 /bower_components/
 /node_modules/
+/ocelot-qunit-web/bower_components/
