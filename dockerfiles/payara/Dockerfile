@@ -9,9 +9,9 @@ ENV PATH $PATH:$PAYARA_HOME/bin
 
 # Install glassfish
 RUN apt-get update && apt-get install -y curl unzip zip inotify-tools && rm -rf /var/lib/apt/lists/* \
-  && curl -L -o /tmp/glassfish-$GLASSFIH_VERSION.zip https://s3-eu-west-1.amazonaws.com/payara.co/Payara+Downloads/Payara+$PAYARA_VERSION/payara-$PAYARA_VERSION.zip \
-  && unzip /tmp/glassfish-$PAYARA_VERSION.zip -d /usr/local \
-  && rm -f /tmp/glassfish-$PAYARA_VERSION.zip
+  && curl -L -o /tmp/payara-$GLASSFIH_VERSION.zip https://s3-eu-west-1.amazonaws.com/payara.co/Payara+Downloads/Payara+$PAYARA_VERSION/payara-$PAYARA_VERSION.zip \
+  && unzip /tmp/payara-$PAYARA_VERSION.zip -d /usr/local \
+  && rm -f /tmp/payara-$PAYARA_VERSION.zip
 
 # Define demo user
 RUN $PAYARA_HOME/bin/asadmin start-domain domain1 \
