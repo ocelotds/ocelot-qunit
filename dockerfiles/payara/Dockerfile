@@ -7,9 +7,9 @@ ENV PAYARA_VERSION 4.1.1.162
 ENV PAYARA_HOME /usr/local/payara41
 ENV PATH $PATH:$PAYARA_HOME/bin
 
-# Install glassfish
+# Install payara
 RUN apt-get update && apt-get install -y curl unzip zip inotify-tools && rm -rf /var/lib/apt/lists/* \
-  && curl -L -o /tmp/payara-$GLASSFIH_VERSION.zip https://s3-eu-west-1.amazonaws.com/payara.co/Payara+Downloads/Payara+$PAYARA_VERSION/payara-$PAYARA_VERSION.zip \
+  && curl -L -o /tmp/payara-$PAYARA_VERSION.zip https://s3-eu-west-1.amazonaws.com/payara.co/Payara+Downloads/Payara+$PAYARA_VERSION/payara-$PAYARA_VERSION.zip \
   && unzip /tmp/payara-$PAYARA_VERSION.zip -d /usr/local \
   && rm -f /tmp/payara-$PAYARA_VERSION.zip
 
