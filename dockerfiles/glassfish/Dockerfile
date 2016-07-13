@@ -2,8 +2,6 @@ FROM java:openjdk-8-jdk
 
 MAINTAINER Francois Achache <francois.achache@gmail.com>
 
-ENV PROFILE glassfish
-
 # Set the GLASSFISH env variable
 ENV GLASSFIH_VERSION 4.1.1
 ENV GLASSFISH_HOME /usr/local/glassfish4
@@ -26,9 +24,6 @@ RUN $GLASSFISH_HOME/bin/asadmin start-domain domain1 \
 EXPOSE 8080 4848 8181
 
 WORKDIR $GLASSFISH_HOME
-
-# Expose workspace
-VOLUME $GLASSFISH_HOME/glassfish/domains/domain1/autodeploy
 
 # verbose mode for foreground mode
 CMD asadmin start-domain --verbose domain1
