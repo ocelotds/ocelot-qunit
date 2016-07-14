@@ -23,6 +23,11 @@ RUN $PAYARA_HOME/bin/asadmin start-domain domain1 \
 # Expose the ports we're interested in
 EXPOSE 8080 4848 8181
 
+COPY deploy.sh $PAYARA_HOME/deploy.sh
+
+RUN chmod ug+x $PAYARA_HOME/deploy.sh
+
+
 WORKDIR $PAYARA_HOME
 
 # verbose mode for foreground mode
