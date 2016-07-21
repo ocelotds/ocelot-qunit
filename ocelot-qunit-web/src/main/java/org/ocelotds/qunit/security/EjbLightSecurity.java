@@ -3,10 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 package org.ocelotds.qunit.security;
 
-import org.ocelotds.qunit.ejbLight.*;
 import java.security.Principal;
-import java.util.Date;
 import javax.annotation.Resource;
+import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
@@ -20,6 +19,7 @@ import org.ocelotds.annotations.DataService;
  */
 @Stateless
 @DataService(resolver = Constants.Resolver.EJB)
+@PermitAll
 public class EjbLightSecurity {
 
 	@Resource
