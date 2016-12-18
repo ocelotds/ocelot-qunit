@@ -71,7 +71,7 @@
 				  .pipe(jshint())
 				  .pipe(jshint.reporter('jshint-stylish'));
 
-		gulp.src(gconfig.rootApp + '/**/*.js')
+		gulp.src([gconfig.rootApp + '/**/*.js', "!" + gconfig.rootApp + '/**/-*.js'])
 				  .pipe(ngAnnotate())
 				  .pipe(jshint())
 				  .pipe(jshint.reporter('jshint-stylish'))

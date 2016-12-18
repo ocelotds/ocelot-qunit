@@ -5,6 +5,7 @@ package org.ocelotds.qunit.security;
 
 import java.security.Principal;
 import javax.annotation.Resource;
+import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.SessionContext;
@@ -20,6 +21,7 @@ import org.ocelotds.annotations.DataService;
 @Stateless
 @DataService(resolver = Constants.Resolver.EJB)
 @PermitAll
+@DeclareRoles({"USERR", "ADMINR"})
 public class EjbLightSecurity {
 
 	@Resource

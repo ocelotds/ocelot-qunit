@@ -1,4 +1,4 @@
-sudo: false
+sudo: required
 env:
   global:
     # VPS_PASSWORD
@@ -7,6 +7,8 @@ env:
     - secure: "Ep8l1/0U13nkBceID2mtnYMj7G/RZVVVwy6O3mgHXp42IhEusDc9P2ApUd6WoWszvFxAMc8nKPLpeVkmYl+BylnD+5i0Kv/338Ad9nr8y4tAHPavR5WAHqU/O/Er64+cy0ZPxYTdVHGRteIk3jovDvDHMrog08h0wBbiUBbku7Pa9TrAyKHxAXDTvbkb7kT/8NS9N00Uj0bGpP9b6hAJzEoTLEC5tfa6UrhrbQaiD8yhC/IvWK3FUO7TNTYR/HRFKd79Kj2CdM7or6RB6pluDgkN226fr4p4debmMPAmfKukW67V3c38feauUKzqnSRn+8znulFxitDXCrBmW+Y14XoVG6vU8BfFtN24qjMzBeGTWct1wfqUgaPKcvqiskplCBCpnBOvsdiexTI1CcvzYPz+hg76hhsZLWo9uitcToF5Gi2pgSy019DIgNCEXhJlYgHmpE+djO34Sm3nwHxKpUZYJYjm81zOX1ZoccNGFE6UiVFL6tY7mjSZ2T6uMGGVNNneNPSLai9uPqpX2OI4lmE+J0nMp+4mHAw/7MzMx9fFy2ueAX3T7LPog6gxKgsZ5YLsWLEaADy4SihQgpRWYYsxaRemPAtj8kranNYw2xEOBsaP+jqMDX4eNbKB5FuUJADUNjcNjF+oXqUzZtKnfZfHZTpFn8WhVGC9b/M5OkA="
     # VPS_HOST
     - secure: "lzZA7Xn2O+BrXf7oA+B7zUiF0hIGey4hHtGtytRsO6sMDv5u4jRs+OC90eijBtX/ZdIxEXISaNF910zx/5pZvKgZ5XaH4EZv0VxkTBblA5Br0e0o7D3+ZjaQ/ab2L4b/VNHgCMyUGTiqoY8C9IOXuMq+hA2OodrhaL8ag8Fju3rdSUbp2XgKsz/vIbGNWcs9dy+UOuNfQHX6rXrF+LvT7qaRKda9gBQdO2/W9B/zuJWaZkGJGNmuOfD37JZtLj3wWdNYaoEmF0eLAMz6EXtD7NN0GJHrN9yZ/LvYANlDDn4OZ8i4VgYG0SotUXXL75BG89wEJ4kAHbI+62Rpqw2kY/rRBHK6Ekd6xGYVDjE8Ap0F3ivzHxNHAsdz2AWIbatxMtd7y9USQofim6vQYb9bJ25CLOcIuG1v5+QMjexjhniAfnjg8ZmitIjGo4wczRyaUlwC1/9h7JgwhImD2xmbmpg90VYpv3DqCL8hfodLreAiz/sVxRRFDD9qu6RarQJP6jb5V79EYMRJZbPpmPGYlsOYYPiDpN+5CBSRCmNg6iNiuDDncZbr3rb01TnMgNjdOtnU9GSQ9lktCPjmgqPQvxVvHRPY9DZGexpiYarVY2ThVOojPkbuIOnvjr6sQiF1JgW2TlgevJDb1uP5Yrnxlf0LXUSdyctFtAjdMO7fSB4="
+services:
+  - docker
 branches:
   only:
    - master
@@ -19,4 +21,5 @@ language: java
 jdk: oraclejdk7
 install: mvn install -DskipTests=true
 after_success:
-  - sshpass -p $VPS_PASSWORD scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ocelot-qunit-ear/target/ocelot-qunit-ear*.ear $VPS_LOGIN@$VPS_HOST:/root/autodeploy/ocelot-qunit-ear.ear
+  - travis/deploy_and_test.sh
+#  - sshpass -p $VPS_PASSWORD scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ocelot-qunit-ear/target/ocelot-qunit-ear*.ear $VPS_LOGIN@$VPS_HOST:/root/autodeploy/ocelot-qunit-ear.ear
